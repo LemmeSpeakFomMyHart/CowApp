@@ -101,7 +101,6 @@ public class CowFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-
         if (mCow.getTagNumber() == 0) {
             CowLab.get(getActivity()).deleteCow(mCow);
         }
@@ -180,7 +179,7 @@ public class CowFragment extends Fragment {
 
         mFatherSpinner = v.findViewById(R.id.cow_father_spinner);
 
-        Cursor cursor = queryCowsTags(getContext(), CowTable.Cols.TAG_NUMBER + " != ?",
+        Cursor cursor = queryCowsColumn(getContext(), CowTable.Cols.TAG_NUMBER,CowTable.Cols.TAG_NUMBER + " != ?",
                 new String[]{Integer.toString(mCow.getTagNumber())});
         MatrixCursor extras = new MatrixCursor(new String[]{"_id", CowTable.Cols.TAG_NUMBER});
         extras.addRow(new String[]
@@ -313,7 +312,8 @@ public class CowFragment extends Fragment {
                     if (CowBaseHelper.CheckIsDataAlreadyInDBorNot(CowTable.NAME,
                             CowTable.Cols.TAG_NUMBER,
                             Integer.toString(mCow.getTagNumber()),
-                            getContext()) && !checkUUIDequality(mCow)) {
+                            getContext()) && !
+                            checkUUIDequality(mCow)) {
                         mCow.setTagNumber(0);
                         Toast.makeText(getActivity(), "Такой номер уже используется, выберите другой",
                                 Toast.LENGTH_SHORT).show();
@@ -396,10 +396,10 @@ public class CowFragment extends Fragment {
     /**
      *Метод для считывания бирок коров по заданному условию
      */
-    private Cursor queryCowsTags(Context context, String whereClause, String[] whereArgs) {
+    private Cursor queryCowsColumn(Context context, String columnName,String whereClause, String[] whereArgs) {
         SQLiteDatabase mDatabase = new CowBaseHelper(context).getReadableDatabase();
         Cursor cursor = mDatabase.query(CowTable.NAME,
-                new String[]{"_id", CowTable.Cols.UUID, CowTable.Cols.TAG_NUMBER},
+                new String[]{"_id", columnName},
                 whereClause,
                 whereArgs,
                 null,
@@ -440,7 +440,7 @@ public class CowFragment extends Fragment {
     }
 
     private void updateDate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("d MMMMMMMM, yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         mBirthDayButton.setText(sdf.format(mCow.getDateOfBirth()));
     }
 
@@ -522,7 +522,7 @@ public class CowFragment extends Fragment {
      *Метод, сравнивающий Id коров, с одинаковыми бирками
      */
     private boolean checkUUIDequality(Cow mCow) {
-        Cursor cursor = queryCowsTags(getContext(),
+        Cursor cursor = queryCowsColumn(getContext(),CowTable.Cols.UUID,
                 CowTable.Cols.TAG_NUMBER + " = ?",
                 new String[]{Integer.toString(mCow.getTagNumber())});
         cursor.moveToFirst();
