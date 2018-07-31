@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">CowApp</string>
+    <string name="tag_number">№ бирки:</string>
+    <string name="new_cow">Добавить корову</string>
+    <string name="hint_edit_text_tag_number">Введите номер бирки сюда</string>
+    <string name="cow_breed">Порода:</string>
+    <string name="question">Корова с таким номером бирки уже существует. Хотите обновить ее данные?</string>
+    <string name="question_metrics">Измерения за эту дату уже существуют, обновить их?</string>
+    <string name="cow_color">Масть:</string>
+    <string name="cow_age">Возраст:</string>
+    <string name="cow_birthday">Дата Рождения:</string>
+    <string name="cow_mother">Мать:</string>
+    <string name="cow_father">Отец:</string>
+    <string name="cow_empty">Список пуст!</string>
+    <string name="no_mother">Нет матери</string>
+    <string name="no_father">Нет отца</string>
+    <string name="update">Обновить</string>
+    <string name="no">Нет</string>
+    <string name="save">Сохранить</string>
+    <string name="cancel">Отмена</string>
+    <string name="date_of_measurement">Дата измерения:</string>
+    <string name="yield">Надой, л/сут:</string>
+    <string name="milk_fat_content">Жирность, %:</string>
+    <string name="weight">Вес коровы, кг:</string>
+    <string name="hint_edit_text_yield">Введите объем надоя сюда</string>
+    <string name="hint_edit_text_fat">Введите жирность молока сюда</string>
+    <string name="hint_edit_text_weight">Введите вес коровы сюда</string>
+    <string name="add_metrics">Добавить измерения:</string>
+    <string name="graph_yield_textView">График надоя, л/сутки</string>
+    <string name="graph_fat_textView">График жирности молока, %</string>
+    <string name="graph_weight_textView">График веса коровы, кг</string>
+    <string-array name="breeds">
+        <item>Не определена</item>
+        <item>Голштинская</item>
+        <item>Черно-пестрая</item>
+        <item>Джерсейская</item>
+        <item>Симментальская</item>
+        <item>Айширская</item>
+        <item>Красная степная</item>
+        <item>Герефордская</item>
+        <item>Ярославская</item>
+        <item>Холмогорская</item>
+        <item>Голландская</item>
+    </string-array>
+
+    <string-array name="colors">
+        <item>Не определена</item>
+        <item>Красная</item>
+        <item>Черная</item>
+        <item>Белая</item>
+        <item>Красно-белая</item>
+        <item>Бурая</item>
+        <item>Светло-рыжая</item>
+        <item>Светло-красная</item>
+        <item>Светло-бурая</item>
+        <item>Темно-бурая</item>
+        <item>Серая</item>
+        <item>Светло-серая</item>
+        <item>Темно-серая</item>
+        <item>Серо-бурая</item>
+        <item>Черно-пестрая</item>
+        <item>Красно-пестрая</item>
+        <item>Чалая (смесь белых и красных волос)</item>
+        <item>Палевая</item>
+        <item>Леопардовая</item>
+    </string-array>
+</resources>
