@@ -101,8 +101,18 @@ public class CowFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        if (mCow.getTagNumber() == 0) {
+        Cursor cursor=queryCowsColumn(getContext(),CowTable.Cols.UUID,
+                CowTable.Cols.TAG_NUMBER + " = ?",
+                new String[]{Integer.toString(0)});
+        UUID mId=null;
+        if (cursor.getCount()>0){
+            cursor.moveToFirst();
+            String uuidToUpdateString = cursor.getString(cursor.getColumnIndex(CowTable.Cols.UUID));
+            mId = UUID.fromString(uuidToUpdateString);
+        }
+        if (mId!=null) {
             CowLab.get(getActivity()).deleteCow(mCow);
+            MeasurementLab.get(getActivity()).deleteMeasurementsByTag(mCow.getTagNumber());
         }
     }
 
