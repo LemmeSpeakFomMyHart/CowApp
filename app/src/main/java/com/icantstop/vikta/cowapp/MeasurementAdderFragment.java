@@ -240,7 +240,7 @@ public class MeasurementAdderFragment extends DialogFragment {
     }
 
     private void updateDate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("d MMMMMMMM, yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         mDateButton.setText(sdf.format(mMeasurement.getDate()));
     }
 
